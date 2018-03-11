@@ -1,0 +1,14 @@
+C:\predix\workspace\catalog-searcher\services\service-catalog-searcher\src\test\java\com\kparlar\catalogsearcher\services\ItunesServiceTest.java
+C:\predix\workspace\catalog-searcher\services\service-catalog-searcher\src\test\java\com\kparlar\catalogsearcher\services\GoogleServiceTest.java
+C:\predix\workspace\catalog-searcher\services\service-catalog-searcher\src\test\java\com\kparlar\catalogsearcher\util\CatalogSearcherTestConstants.java
+C:\predix\workspace\catalog-searcher\services\service-catalog-searcher\src\test\java\com\kparlar\catalogsearcher\util\HystrixAsync.java
+C:\predix\workspace\catalog-searcher\services\service-catalog-searcher\src\test\java\com\kparlar\catalogsearcher\util\provider\ItunesSongDtoProvider.java
+C:\predix\workspace\catalog-searcher\services\service-catalog-searcher\src\test\java\com\kparlar\catalogsearcher\controller\GlobalControllerExceptionHandlerTest.java
+C:\predix\workspace\catalog-searcher\services\service-catalog-searcher\src\test\java\com\kparlar\catalogsearcher\util\provider\GoogleResponseDtoProvider.java
+C:\predix\workspace\catalog-searcher\services\service-catalog-searcher\src\test\java\com\kparlar\catalogsearcher\controller\app\SearchControllerTest.java
+C:\predix\workspace\catalog-searcher\services\service-catalog-searcher\src\test\java\com\kparlar\catalogsearcher\util\provider\GoogleVolumeDtoProvider.java
+C:\predix\workspace\catalog-searcher\services\service-catalog-searcher\src\test\java\com\kparlar\catalogsearcher\util\provider\SearchResponseDtoProvider.java
+C:\predix\workspace\catalog-searcher\services\service-catalog-searcher\src\test\java\com\kparlar\catalogsearcher\util\provider\CatalogSearcherServiceProvider.java
+C:\predix\workspace\catalog-searcher\services\service-catalog-searcher\src\test\java\com\kparlar\catalogsearcher\services\SearchServiceTest.java
+C:\predix\workspace\catalog-searcher\services\service-catalog-searcher\src\test\java\com\kparlar\catalogsearcher\util\provider\GoogleVolumeInfoDtoProvider.java
+C:\predix\workspace\catalog-searcher\services\service-catalog-searcher\src\test\java\com\kparlar\catalogsearcher\util\provider\ItunesResponseDtoProvider.java

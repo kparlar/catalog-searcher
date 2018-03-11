@@ -1,0 +1,17 @@
+com\kparlar\catalogsearcher\util\provider\CatalogSearcherServiceProvider.class
+com\kparlar\catalogsearcher\util\provider\ItunesSongDtoProvider.class
+com\kparlar\catalogsearcher\util\provider\ItunesResponseDtoProvider.class
+com\kparlar\catalogsearcher\util\provider\SearchResponseDtoProvider.class
+com\kparlar\catalogsearcher\util\HystrixAsync$2.class
+com\kparlar\catalogsearcher\util\CatalogSearcherTestConstants.class
+com\kparlar\catalogsearcher\controller\GlobalControllerExceptionHandlerTest.class
+com\kparlar\catalogsearcher\util\HystrixAsync$3.class
+com\kparlar\catalogsearcher\controller\app\SearchControllerTest.class
+com\kparlar\catalogsearcher\services\SearchServiceTest.class
+com\kparlar\catalogsearcher\util\provider\GoogleVolumeInfoDtoProvider.class
+com\kparlar\catalogsearcher\util\HystrixAsync.class
+com\kparlar\catalogsearcher\services\GoogleServiceTest.class
+com\kparlar\catalogsearcher\util\provider\GoogleResponseDtoProvider.class
+com\kparlar\catalogsearcher\services\ItunesServiceTest.class
+com\kparlar\catalogsearcher\util\HystrixAsync$1.class
+com\kparlar\catalogsearcher\util\provider\GoogleVolumeDtoProvider.class
