@@ -1,9 +1,8 @@
-package com.kparlar.catalogsearcher.services;
+package com.kparlar.catalogsearcher.component;
 
 import com.kparlar.catalogsearcher.model.dto.GoogleResponseDto;
 import com.kparlar.catalogsearcher.model.dto.SearchResponseDto;
-import com.kparlar.catalogsearcher.services.util.CatalogSearcherServiceCall;
-import com.kparlar.catalogsearcher.services.util.CatalogSearcherServiceProperties;
+import com.kparlar.catalogsearcher.component.util.CatalogSearcherServiceCall;
 import com.kparlar.catalogsearcher.util.CatalogSearcherConstants;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
@@ -18,13 +17,13 @@ import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
 @Component
-public class GoogleService{
+public class BookCatalog implements Catalog{
 
     private CatalogSearcherServiceProperties catalogSearcherServiceProperties;
     private RestTemplate restTemplate;
     private Long maxResultSize;
 
-    public GoogleService(CatalogSearcherServiceProperties catalogSearcherServiceProperties, RestTemplate restTemplate,
+    public BookCatalog(CatalogSearcherServiceProperties catalogSearcherServiceProperties, RestTemplate restTemplate,
                          @Value("${catalog-searcher.search.param.max-result-size}")Long maxResultSize){
         this.catalogSearcherServiceProperties = catalogSearcherServiceProperties;
         this.restTemplate = restTemplate;
