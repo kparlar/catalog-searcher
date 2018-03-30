@@ -1,31 +1,28 @@
-package com.kparlar.catalogsearcher.services;
+package com.kparlar.catalogsearcher.component;
 
 import com.kparlar.catalogsearcher.model.dto.ItunesResponseDto;
 import com.kparlar.catalogsearcher.model.dto.SearchResponseDto;
-import com.kparlar.catalogsearcher.services.util.CatalogSearcherServiceCall;
-import com.kparlar.catalogsearcher.services.util.CatalogSearcherServiceProperties;
-
+import com.kparlar.catalogsearcher.component.util.CatalogSearcherServiceCall;
 import com.kparlar.catalogsearcher.util.CatalogSearcherConstants;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.netflix.hystrix.contrib.javanica.command.AsyncResult;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
-@Service
-public class ItunesService{
+@Component
+public class AlbumCatalog implements Catalog{
 
     private CatalogSearcherServiceProperties catalogSearcherServiceProperties;
     private RestTemplate restTemplate;
     private Long maxResultSize;
 
-    public ItunesService(CatalogSearcherServiceProperties catalogSearcherServiceProperties, RestTemplate restTemplate, @Value("${catalog-searcher.search.param.max-result-size}")Long maxResultSize){
+    public AlbumCatalog(CatalogSearcherServiceProperties catalogSearcherServiceProperties, RestTemplate restTemplate, @Value("${catalog-searcher.search.param.max-result-size}")Long maxResultSize){
         this.catalogSearcherServiceProperties = catalogSearcherServiceProperties;
         this.restTemplate = restTemplate;
         this.maxResultSize = maxResultSize;

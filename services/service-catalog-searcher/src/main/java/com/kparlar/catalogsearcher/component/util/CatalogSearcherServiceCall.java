@@ -1,4 +1,4 @@
-package com.kparlar.catalogsearcher.services.util;
+package com.kparlar.catalogsearcher.component.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

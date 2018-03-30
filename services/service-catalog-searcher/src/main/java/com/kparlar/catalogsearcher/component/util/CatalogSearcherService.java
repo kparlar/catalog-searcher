@@ -1,4 +1,4 @@
-package com.kparlar.catalogsearcher.services.util;
+package com.kparlar.catalogsearcher.component.util;
 
 public class CatalogSearcherService {
 

@@ -1,5 +1,6 @@
-package com.kparlar.catalogsearcher.services.util;
+package com.kparlar.catalogsearcher.component;
 
+import com.kparlar.catalogsearcher.component.util.CatalogSearcherService;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 

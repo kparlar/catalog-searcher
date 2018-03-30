@@ -1,5 +1,8 @@
 package com.kparlar.catalogsearcher.services;
 
+import com.kparlar.catalogsearcher.component.BookCatalog;
+import com.kparlar.catalogsearcher.component.AlbumCatalog;
+import com.kparlar.catalogsearcher.component.Catalog;
 import com.kparlar.catalogsearcher.exception.CatalogSearcherBadRequestException;
 import com.kparlar.catalogsearcher.exception.CatalogSearcherException;
 import com.kparlar.catalogsearcher.model.dto.SearchResponseDto;
@@ -26,9 +29,9 @@ public class SearchServiceTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Mock
-    private ItunesService itunesService;
+    private Catalog albumCatalog;
     @Mock
-    private GoogleService googleService;
+    private Catalog bookCatalog;
 
     private SearchService searchService;
     private HystrixAsync hystrixAsync;
@@ -40,7 +43,7 @@ public class SearchServiceTest {
     @Before
     public void setup(){
         MockitoAnnotations.initMocks(this);
-        this.searchService = new SearchService(this.itunesService, this.googleService);
+        this.searchService = new SearchService(this.albumCatalog, this.bookCatalog);
         hystrixAsync = new HystrixAsync();
 
         SearchResponseDtoProvider searchResponseDtoProvider = new SearchResponseDtoProvider();
@@ -50,8 +53,8 @@ public class SearchServiceTest {
 
     @Test
     public void getSearchGivenValidInputWhenCaseAllThenReturnOneBookAndOneAlbumInOrderWay() throws CatalogSearcherException {
-        Mockito.when(this.itunesService.getSearch(eq(CatalogSearcherTestConstants.DUMMY_SEARCH_TERM))).thenReturn(hystrixAsync.getFuture(searchResponseDtosForAlbum));
-        Mockito.when(this.googleService.getSearch(eq(CatalogSearcherTestConstants.DUMMY_SEARCH_TERM))).thenReturn(hystrixAsync.getFuture(searchResponseDtosForBook));
+        Mockito.when(this.albumCatalog.getSearch(eq(CatalogSearcherTestConstants.DUMMY_SEARCH_TERM))).thenReturn(hystrixAsync.getFuture(searchResponseDtosForAlbum));
+        Mockito.when(this.bookCatalog.getSearch(eq(CatalogSearcherTestConstants.DUMMY_SEARCH_TERM))).thenReturn(hystrixAsync.getFuture(searchResponseDtosForBook));
         List<SearchResponseDto> result = this.searchService.getSearch(CatalogSearcherConstants.SEARCH_TERM_ALL, CatalogSearcherTestConstants.DUMMY_SEARCH_TERM);
         assertEquals(result.size(), 2);
         assertEquals(result.get(0).getArtists()[0], searchResponseDtosForAlbum.get(0).getArtists()[0]);
@@ -61,7 +64,7 @@ public class SearchServiceTest {
     }
     @Test
     public void getSearchGivenValidInputWhenCaseAlbumThenReturnOneAlbum() throws CatalogSearcherException {
-        Mockito.when(this.itunesService.getSearch(eq(CatalogSearcherTestConstants.DUMMY_SEARCH_TERM))).thenReturn(hystrixAsync.getFuture(searchResponseDtosForAlbum));
+        Mockito.when(this.albumCatalog.getSearch(eq(CatalogSearcherTestConstants.DUMMY_SEARCH_TERM))).thenReturn(hystrixAsync.getFuture(searchResponseDtosForAlbum));
         List<SearchResponseDto> result = this.searchService.getSearch(CatalogSearcherConstants.SEARCH_TERM_ALBUM, CatalogSearcherTestConstants.DUMMY_SEARCH_TERM);
         assertEquals(result.size(), 1);
         assertEquals(result.get(0).getArtists()[0], searchResponseDtosForAlbum.get(0).getArtists()[0]);
@@ -69,7 +72,7 @@ public class SearchServiceTest {
     }
     @Test
     public void getSearchGivenValidInputWhenCaseBookThenReturnOneBook() throws CatalogSearcherException {
-        Mockito.when(this.googleService.getSearch(eq(CatalogSearcherTestConstants.DUMMY_SEARCH_TERM))).thenReturn(hystrixAsync.getFuture(searchResponseDtosForBook));
+        Mockito.when(this.bookCatalog.getSearch(eq(CatalogSearcherTestConstants.DUMMY_SEARCH_TERM))).thenReturn(hystrixAsync.getFuture(searchResponseDtosForBook));
         List<SearchResponseDto> result = this.searchService.getSearch(CatalogSearcherConstants.SEARCH_TERM_BOOK, CatalogSearcherTestConstants.DUMMY_SEARCH_TERM);
         assertEquals(result.size(), 1);
         assertEquals(result.get(0).getArtists()[0], searchResponseDtosForBook.get(0).getArtists()[0]);
@@ -79,7 +82,7 @@ public class SearchServiceTest {
     public void getSearchGivenValidInputWhenExceptionInFutureThenThrowInterruptedException() throws CatalogSearcherException {
 
         this.thrown.expect(CatalogSearcherException.class);
-        Mockito.when(this.googleService.getSearch(eq(CatalogSearcherTestConstants.DUMMY_SEARCH_TERM))).thenReturn(hystrixAsync.getFutureForInterruptedException());
+        Mockito.when(this.bookCatalog.getSearch(eq(CatalogSearcherTestConstants.DUMMY_SEARCH_TERM))).thenReturn(hystrixAsync.getFutureForInterruptedException());
         this.searchService.getSearch(CatalogSearcherConstants.SEARCH_TERM_BOOK, CatalogSearcherTestConstants.DUMMY_SEARCH_TERM);
     }
 
@@ -87,7 +90,7 @@ public class SearchServiceTest {
     public void getSearchGivenValidInputWhenExceptionInFutureThenThrowExecutionException() throws CatalogSearcherException {
 
         this.thrown.expect(CatalogSearcherException.class);
-        Mockito.when(this.googleService.getSearch(eq(CatalogSearcherTestConstants.DUMMY_SEARCH_TERM))).thenReturn(hystrixAsync.getFutureForExecutionException());
+        Mockito.when(this.bookCatalog.getSearch(eq(CatalogSearcherTestConstants.DUMMY_SEARCH_TERM))).thenReturn(hystrixAsync.getFutureForExecutionException());
         this.searchService.getSearch(CatalogSearcherConstants.SEARCH_TERM_BOOK, CatalogSearcherTestConstants.DUMMY_SEARCH_TERM);
     }
 

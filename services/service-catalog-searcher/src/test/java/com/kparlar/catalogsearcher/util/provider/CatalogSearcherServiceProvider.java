@@ -1,6 +1,6 @@
 package com.kparlar.catalogsearcher.util.provider;
 
-import com.kparlar.catalogsearcher.services.util.CatalogSearcherService;
+import com.kparlar.catalogsearcher.component.util.CatalogSearcherService;
 import com.kparlar.catalogsearcher.util.CatalogSearcherTestConstants;
 
 public class CatalogSearcherServiceProvider {

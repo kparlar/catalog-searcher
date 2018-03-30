@@ -30,8 +30,8 @@ public class SearchController {
     @Timed(name = "kp-search-service")
     @RequestMapping(value = "",method = RequestMethod.GET)
     @ApiOperation(value = "Search all , album or book (has to be lower-case according to search type",
-            notes = "Each search will be done according to Search Type. Search Types are ALBUM or BOOK. No other search type is accepted and return error. " +
-                    "Search is limitted to 5 data. ")
+            notes = "Each search will be done according to Search Type. Search Types are 'album', 'book' or 'all'. No other search type is accepted and return error. " +
+                    "Search is limitted to 5 data. Results are sorted in alphabetically ascending order. ")
     @ApiResponses(value =
             {@ApiResponse(code = 200, message = "Successfully searched and return result."),
                     @ApiResponse(code = 400, message = "Search Type has to be all, album or book (has to be lower-case) otherwise this exception will be thrown"),
