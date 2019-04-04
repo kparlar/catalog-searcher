@@ -1,0 +1,21 @@
+version: '2.3'
+services:
+  catalog-searcher:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - catalog-searcher_network
+  jmeter:
+    build:
+      context: .
+      dockerfile: jmeter/Dockerfile
+    depends_on:
+      - catalog-searcher
+    networks:
+      - catalog-searcher_network
+    links:
+      - catalog-searcher
+networks:
+  catalog-searcher_network:
+
