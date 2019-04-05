@@ -10,6 +10,9 @@ services:
     build:
       context: .
       dockerfile: jmeter/Dockerfile
+    volumes:
+    # Specify an absolute path mapping
+      - ./jmeter/output:/output
     depends_on:
       - catalog-searcher
     networks:

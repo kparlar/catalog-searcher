@@ -214,6 +214,26 @@ For API calls please take a look to Postman Section
  * https://jmeter-plugins.org/?search=jpgc-graphs-vs
 
 I have added catalog-searcher-test.jmx under tests folder so you can run your own tests too. And 
-
+ ## Run With Docker Images
+ There is also docker images for both jmeter and spring-boot application you can easily run both with docker.
+ Dockerfile in the first relative path runs the spring-boot application
+ Dockerfile under the Jmeter folder runs the jmeter.  
+ #### Docker - Catalog-Searcher
+ This docker file contains only building the spring-boot jar and running it. Thats all
+ #### Docker - Jmeter
+ This docker files do these
+ - installs required tool for images
+ - set some environment variables
+ - creates temp folders for copy required files
+ - downloads the Jmeter 5.1
+ - and run launcher.sh under jmeter folder \
+You can easily find the outputs under jmeter/output folder. There will be two files created :
+ - catalog-searcher-...-log file 
+ - catalog-searcher-...-jtl file
+ #### Hot To Run Docker
+ First run build-docker.sh  and later  run this command
+ > docker-compose up
+ 
+   
 
 

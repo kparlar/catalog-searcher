@@ -3,6 +3,9 @@
 set -e
 echo  "starting load-test on `date`"
 now=`date +%Y-%m-%d.%H:%M:%S`
+export volume_path=/home/korayparlar/IdeaProjects/catalog-searcher/jmeter/output
+export jmeter_path=/output
+
 
 while ! curl catalog-searcher:8011;
 do
@@ -11,7 +14,9 @@ do
 done;
 echo Connected!;
 
-jmeter -n -t /catalog-searcher-test.jmx \
+
+
+ jmeter -n -t /catalog-searcher-test.jmx \
       -j /output/catalog-searcher-$now.log \
       -l /output/catalog-searcher-results-$now.jtl \
       -Jjmeter.save.saveservice.output_format=xml \
@@ -20,3 +25,8 @@ jmeter -n -t /catalog-searcher-test.jmx \
       -JnumberOfThreads=1
 
 echo "load-test finished on `date`"
+
+while true;
+do
+ sleep 1;
+done;
