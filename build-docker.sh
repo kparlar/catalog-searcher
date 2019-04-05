@@ -2,6 +2,8 @@
 
 set -e
 
+mvn -f ./services/service-catalog-searcher/pom.xml clean install
+
 export IMAGE_NAME=${IMAGE_NAME:-catalog-searcher}
 export IMAGE_TAG=${IMAGE_TAG:-latest}
 export CATALOG_SEARCHER_SERVER_URL=catalog-searcher
